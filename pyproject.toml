@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=66.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[project]
+name = "faststream-tutorial"
+dynamic = ["version"]
+description = "Tutorial"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    { name = "Sergey Yavorsky", email = "maclovi.dev@gmail.com" },
+]
+dependencies = [
+    "mkdocs==1.6.1",
+    "mkdocs-material==9.6.12",
+    "mkdocstrings[python]==0.29.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Maclovi/faststream-tutorial"
+Documentation = "https://github.com/Maclovi/faststream-tutorial/README.md"
+Repository = "https://github.com/Maclovi/faststream-tutorial"
+Issues = "https://github.com/Maclovi/faststream-tutorial/issues"
+
+[tool.codespell]
+skip = "*.pyi,*.pyc,./site"

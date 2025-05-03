@@ -1,0 +1,87 @@
+site_name: FastStream Tutorial
+site_description: Небольшое обучение по FastStream
+site_author: Sergey Yavorsky
+site_url: https://github.com/Maclovi/faststream-tutorial
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - content.code.copy
+    - navigation.sections
+    - navigation.expand
+
+repo_url: https://github.com/Maclovi/faststream-tutorial
+repo_name: Maclovi/faststream-tutorial
+
+nav:
+  - Введение: index.md
+  - Быстрый старт: quickstart.md
+  - Создание приложений:
+      - Основы: basics/index.md
+      - Объявление брокеров: basics/brokers.md
+      - Объявление хендлеров: basics/handlers.md
+      - Группировка хендлеров: basics/handler_groups.md
+      - Lifespan-события: basics/lifespan.md
+      - Валидация данных: basics/validation.md
+      - Структура проекта: basics/project_structure.md
+  - Брокеры:
+      - RabbitMQ: brokers/rabbitmq.md
+      - Kafka: brokers/kafka.md
+      - NATS: brokers/nats.md
+      - Redis: brokers/redis.md
+  - Маршруты:
+      - Объявление маршрутов: routes/declaration.md
+      - Типы маршрутов: routes/types.md
+      - Параметры маршрутов: routes/parameters.md
+  - Интеграции:
+      - FastAPI: integrations/fastapi.md
+      - SQLAlchemy: integrations/sqlalchemy.md
+      - Pydantic: integrations/pydantic.md
+      - Dependency Injection: integrations/di.md
+      - Документация AsyncAPI: integrations/asyncapi.md
+  - Масштабирование и DevOps:
+      - Масштабирование: devops/scaling.md
+      - Мониторинг: devops/monitoring.md
+      - Логирование: devops/logging.md
+  - Тестирование:
+      - Тестирование хендлеров: testing/handlers.md
+      - Тестирование брокеров: testing/brokers.md
+  - Конфигурация:
+      - Настройки брокеров: config/broker_settings.md
+      - Переменные окружения: config/env.md
+  - Внутренние компоненты: internals/index.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            heading_level: 3
+            show_root_heading: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.inlinehilite
+  - attr_list
+  - def_list
+  - smarty
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
