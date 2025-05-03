@@ -1,7 +1,7 @@
 site_name: FastStream Tutorial
-site_description: Небольшое обучение по FastStream
+site_description: Обучение по FastStream
 site_author: Sergey Yavorsky
-site_url: https://github.com/Maclovi/faststream-tutorial
+site_url: https://maclovi.github.io/faststream-tutorial/
 
 theme:
   name: material

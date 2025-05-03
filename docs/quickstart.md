@@ -43,6 +43,12 @@ broker = RabbitBroker("amqp://guest:guest@localhost:5672/")
 async def main():
     await broker.connect()
     await broker.publish("Привет!", "my-queue")
+    await broker.close()
+
+    # или через контекстный менеджер (предпочтительно)
+    async with broker:
+        await broker.publish("Привет!", "my-queue")
+
 
 import asyncio
 asyncio.run(main())
