@@ -1,10 +1,11 @@
-site_name: FastStream Tutorial
-site_description: Обучение по FastStream
+site_name: Руководство по FastStream для новичков
+site_description: Руководство по FastStream для новичков
 site_author: Sergey Yavorsky
 site_url: https://maclovi.github.io/faststream-tutorial/
 
 theme:
   name: material
+  language: ru
   palette:
     - scheme: default
       toggle:
@@ -23,42 +24,14 @@ repo_url: https://github.com/Maclovi/faststream-tutorial
 repo_name: Maclovi/faststream-tutorial
 
 nav:
-  - Введение: index.md
-  - Быстрый старт: quickstart.md
-  - Создание приложений:
-      - Основы: basics/index.md
-      - Объявление брокеров: basics/brokers.md
-      - Объявление хендлеров: basics/handlers.md
-      - Группировка хендлеров: basics/handler_groups.md
-      - Lifespan-события: basics/lifespan.md
-      - Валидация данных: basics/validation.md
-      - Структура проекта: basics/project_structure.md
-  - Брокеры:
-      - RabbitMQ: brokers/rabbitmq.md
-      - Kafka: brokers/kafka.md
-      - NATS: brokers/nats.md
-      - Redis: brokers/redis.md
-  - Маршруты:
-      - Объявление маршрутов: routes/declaration.md
-      - Типы маршрутов: routes/types.md
-      - Параметры маршрутов: routes/parameters.md
-  - Интеграции:
-      - FastAPI: integrations/fastapi.md
-      - SQLAlchemy: integrations/sqlalchemy.md
-      - Pydantic: integrations/pydantic.md
-      - Dependency Injection: integrations/di.md
-      - Документация AsyncAPI: integrations/asyncapi.md
-  - Масштабирование и DevOps:
-      - Масштабирование: devops/scaling.md
-      - Мониторинг: devops/monitoring.md
-      - Логирование: devops/logging.md
-  - Тестирование:
-      - Тестирование хендлеров: testing/handlers.md
-      - Тестирование брокеров: testing/brokers.md
-  - Конфигурация:
-      - Настройки брокеров: config/broker_settings.md
-      - Переменные окружения: config/env.md
-  - Внутренние компоненты: internals/index.md
+  - Главная: index.md
+  - Что такое брокеры сообщений?: introduction.md
+  - Установка и настройка: setup.md
+  - Первое приложение: first_app.md
+  - Pydantic: pydantic.md
+  - Тестирование: testing.md
+  - Документация: documentation.md
+  - Что дальше?: next_steps.md
 
 plugins:
   - search
