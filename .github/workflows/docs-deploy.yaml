@@ -47,7 +47,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/
+          path: docs/site
 
       - name: Deploy GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          path: docs/site
