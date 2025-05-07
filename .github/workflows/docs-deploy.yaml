@@ -42,7 +42,7 @@ jobs:
       #     markdownlint docs/**/*.md
 
       - name: Build MkDocs
-        run: mkdocs build
+        run: mkdocs build -f docs/mkdocs.yml
 
       - name: Deploy to GitHub Pages
         uses: actions/upload-pages-artifact@v3

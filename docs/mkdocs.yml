@@ -1,0 +1,100 @@
+site_name: Руководство
+site_description: Руководство по FastStream для новичков
+site_author: Sergey Yavorsky
+site_url: https://maclovi.github.io/faststream-tutorial/
+
+docs_dir: docs
+
+repo_name: Maclovi/faststream-tutorial
+repo_url: https://github.com/Maclovi/faststream-tutorial
+edit_uri: https://github.com/Maclovi/faststream-tutorial/tree/main/docs/docs
+
+watch:
+  - docs
+  - docs_src
+
+theme:
+  name: material
+  language: ru
+  font:
+    text: Mulish
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil-circle-outline
+  features:
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate      # code annotations with # (1)
+    - content.tabs.link          # sync total page tabs
+    - content.action.edit        # add edit btn at every page
+    - navigation.sections
+    - navigation.expand
+    - navigation.tabs.sticky     # navbar always expanded
+    - navigation.indexes         # attach index document direct to section
+    - navigation.tracking        # show current TOC section in the page url
+    - navigation.prune           # reduce render size
+    - navigation.top             # back-to-top btn
+    - navigation.footer          # show footer with next/prev btns
+
+repo_url: https://github.com/Maclovi/faststream-tutorial
+repo_name: Maclovi/faststream-tutorial
+
+nav:
+  - Главная: index.md
+  - Что такое брокеры сообщений?: introduction.md
+  - Установка и настройка: setup.md
+  - Первое приложение: first_app.md
+  - Pydantic: pydantic.md
+  - Тестирование: testing.md
+  - Документация: documentation.md
+  - Что дальше?: next_steps.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            heading_level: 3
+            show_root_heading: true
+  # - minify:
+  #     minify_html: true
+  #     minify_js: true
+  #     minify_css: true
+  #     htmlmin_opts:
+  #       remove_comments: true
+  #     cache_safe: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - attr_list
+  - def_list
+  - smarty
+  - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: "#" # replace TOC block symbol
+      toc_depth: 3
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
