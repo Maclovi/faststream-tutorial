@@ -74,7 +74,7 @@ faststream docs gen app:app
 faststream docs serve app:app
 ```
 
-![AsyncAPI](../assets/img/AsyncAPI.png)
+[![AsyncAPI](../assets/img/AsyncAPI.png)](../assets/img/AsyncAPI.png)
 
 В `http://localhost:8000` вы увидите:
 

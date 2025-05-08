@@ -3,11 +3,10 @@ from unittest.mock import AsyncMock
 from pydantic import BaseModel, ValidationError
 from faststream.rabbit import RabbitBroker, TestBroker
 
-# Определяем модель для тестов (копия из app.py и app2.py)
+# Определяем модель для тестов (копия из app.py)
 class UserMessage(BaseModel):
     username: str
     message: str
-
 
 @pytest.mark.asyncio
 async def test_correct_message():
@@ -17,9 +16,7 @@ async def test_correct_message():
     # Мокируем обработчики
     handle_message = AsyncMock()
     check_result = AsyncMock()
-    handle_output = AsyncMock()
 
-    # Подписчики из app.py
     @broker.subscriber("input-queue")
     async def handle_message_mock(data: UserMessage):
         await handle_message(data)
@@ -32,11 +29,6 @@ async def test_correct_message():
     async def check_result_mock(data: UserMessage):
         await check_result(data)
 
-    # Подписчик из app2.py
-    @broker.subscriber("output-queue")
-    async def handle_output_mock(data: UserMessage):
-        await handle_output(data)
-
     # Тестируем с эмуляцией брокера
     async with TestBroker(broker):
         # Отправляем корректное сообщение
@@ -45,12 +37,10 @@ async def test_correct_message():
             queue="input-queue"
         )
 
-        # Проверяем вызов handle_message (app.py)
+        # Проверяем вызов handle_message
         handle_message.assert_called_once_with(UserMessage(username="Alice", message="Hello"))
-        # Проверяем вызов check_result (app.py)
+        # Проверяем вызов check_result
         check_result.assert_called_once_with(UserMessage(username="Alice", message="HELLO"))
-        # Проверяем вызов handle_output (app2.py)
-        handle_output.assert_called_once_with(UserMessage(username="Alice", message="HELLO"))
 
 @pytest.mark.asyncio
 async def test_invalid_message():
