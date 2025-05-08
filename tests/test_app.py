@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock
 from pydantic import BaseModel, ValidationError
 from faststream.rabbit import RabbitBroker, TestBroker
 

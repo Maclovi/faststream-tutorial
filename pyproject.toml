@@ -5,6 +5,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 include-package-data = true
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project]
 name = "faststream-tutorial"
 dynamic = ["version"]
@@ -16,9 +19,17 @@ authors = [
     { name = "Sergey Yavorsky", email = "maclovi.dev@gmail.com" },
 ]
 dependencies = [
+    # app
+    "faststream[rabbit,cli]==0.5.40",
+    # docs
     "mkdocs==1.6.1",
     "mkdocs-material==9.6.12",
     "mkdocstrings[python]==0.29.1",
+    "mkdocs-minify-plugin==0.8.0",
+    # tests
+    "coverage[toml]==7.8.0",
+    "pytest==8.3.5",
+    "pytest-asyncio==0.26.0",
 ]
 
 [project.urls]

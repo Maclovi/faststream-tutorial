@@ -7,6 +7,7 @@ class UserMessage(BaseModel):
     username: str
     message: str
 
+
 # Создаем брокер и приложение
 broker = RabbitBroker("amqp://guest:guest@localhost:5672/")
 app = FastStream(broker)
@@ -23,7 +24,7 @@ async def handle_message(data: UserMessage, logger: Logger) -> None:
     )
 
 
-# Подписываемся на очередь output-queue для проверки результата
+# Подписываемся на очередь output-queue
 @broker.subscriber("output-queue")
 async def check_result(data: UserMessage, logger: Logger) -> None:
-    logger.info(f"Результат: {data.username} сказал '{data.message}'")
+    logger.info(f"Промежуточный результат: {data.username} сказал '{data.message}'")

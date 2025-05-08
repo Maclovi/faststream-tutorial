@@ -1,4 +1,4 @@
-site_name: Руководство
+site_name: Руководство FastStream
 site_description: Руководство по FastStream для новичков
 site_author: Sergey Yavorsky
 site_url: https://maclovi.github.io/faststream-tutorial/
@@ -11,22 +11,21 @@ edit_uri: https://github.com/Maclovi/faststream-tutorial/tree/main/docs/docs
 
 watch:
   - docs
-  - docs_src
 
 theme:
   name: material
   language: ru
   font:
     text: Mulish
-  palette:
+  palette: 
     - scheme: default
       toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+        icon: material/lightbulb
+        name: Переключить на тёмную тему
     - scheme: slate
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/lightbulb-outline
+        name: Переключить на светлую тему
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil-circle-outline
@@ -50,14 +49,15 @@ repo_url: https://github.com/Maclovi/faststream-tutorial
 repo_name: Maclovi/faststream-tutorial
 
 nav:
-  - Главная: index.md
-  - Что такое брокеры сообщений?: introduction.md
-  - Установка и настройка: setup.md
-  - Первое приложение: first_app.md
-  - Pydantic: pydantic.md
-  - Тестирование: testing.md
-  - Документация: documentation.md
-  - Что дальше?: next_steps.md
+  - Главная: ru/index.md
+  - Что такое брокеры сообщений?: ru/introduction.md
+  - Установка и настройка: ru/setup.md
+  - Первое приложение: ru/first_app.md
+  - Взаимодействие между сервисами: ru/inter_service.md
+  - Pydantic: ru/pydantic.md
+  - Тестирование: ru/testing.md
+  - Документация: ru/documentation.md
+  - Что дальше?: ru/next_steps.md
 
 plugins:
   - search
@@ -68,23 +68,34 @@ plugins:
             show_source: true
             heading_level: 3
             show_root_heading: true
-  # - minify:
-  #     minify_html: true
-  #     minify_js: true
-  #     minify_css: true
-  #     htmlmin_opts:
-  #       remove_comments: true
-  #     cache_safe: true
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+      cache_safe: true
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.keys
   - attr_list
   - def_list
   - smarty
   - md_in_html
+  - pymdownx.snippets:
+        base_path: .
+        check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
@@ -92,9 +103,10 @@ markdown_extensions:
       toc_depth: 3
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.highlight:
-      anchor_linenums: true
+  - pymdownx.highlight:   # Настройки подсветки
       line_spans: __span
+      use_pygments: true
+      anchor_linenums: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
