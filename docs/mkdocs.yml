@@ -17,15 +17,19 @@ theme:
   language: ru
   font:
     text: Mulish
-  palette: 
-    - scheme: default
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
       toggle:
         icon: material/lightbulb
-        name: Переключить на тёмную тему
-    - scheme: slate
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
       toggle:
         icon: material/lightbulb-outline
-        name: Переключить на светлую тему
+        name: Switch to light mode
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil-circle-outline
@@ -49,7 +53,7 @@ repo_url: https://github.com/Maclovi/faststream-tutorial
 repo_name: Maclovi/faststream-tutorial
 
 nav:
-  - Главная: ru/index.md
+  - Главная: index.md
   - Что такое брокеры сообщений?: ru/introduction.md
   - Установка и настройка: ru/setup.md
   - Первое приложение: ru/first_app.md

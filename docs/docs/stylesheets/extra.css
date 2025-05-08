@@ -2,24 +2,7 @@
   --md-primary-fg-color: #004d40;
   --md-primary-fg-color--light: #4db6ac;
   --md-primary-fg-color--dark: #00796b;
+
   --md-typeset-a-color: var(--md-primary-fg-color--light);
-  --md-accent-fg-color: #4db6ac;
-}
-
-.md-typeset a:hover {
-  color: var(--md-primary-fg-color--dark) !important;
-}
-
-.md-nav__link--active {
-  color: var(--md-primary-fg-color--light) !important;
-  font-weight: bold;
-}
-
-.md-typeset .md-button {
-  background-color: var(--md-primary-fg-color) !important;
-  border-color: var(--md-primary-fg-color) !important;
-}
-
-.md-typeset .md-button:hover {
-  background-color: var(--md-primary-fg-color--dark) !important;
+  --md-accent-fg-color: var(--md-primary-fg-color--dark);
 }
