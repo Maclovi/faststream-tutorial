@@ -15,7 +15,7 @@
 
 Создайте файл `app.py` в папке `faststream-tutorial` и добавьте следующий код:
 
-```python
+```python linenums="1" title="app.py" hl_lines="5 7 11-13"
 --8<-- "src/tutorial/app.py"
 ```
 
@@ -64,7 +64,7 @@ FastStream предоставляет несколько способов под
 
 Для отправки тестового сообщения мы используем контекстный менеджер, так как это просто публикация без подписчиков. Создайте файл `send_message.py`:
 
-```python
+```python linenums="1" title="send_message.py"
 --8<-- "src/tutorial/send_message.py"
 ```
 

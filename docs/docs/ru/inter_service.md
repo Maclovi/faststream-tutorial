@@ -19,7 +19,7 @@
 
 Обновите файл `app.py` в папке `faststream-tutorial`, добавив два подписчика:
 
-```python
+```python linenums="1" title="app.py" hl_lines="5 7 11-12 16-17 21-22"
 --8<-- "src/tutorial/inter_service/app.py"
 ```
 
@@ -57,7 +57,7 @@
 
 Создайте файл `app2.py` в папке `faststream-tutorial` для второго сервиса:
 
-```python
+```python linenums="1" title="app2.py" hl_lines="11-12"
 --8<-- "src/tutorial/inter_service/app2.py"
 ```
 
@@ -79,7 +79,7 @@
 
 Воспользуемся ранее созданным скриптом `send_message.py`:
 
-```python
+```python linenums="1" title="send_message.py"
 --8<-- "src/tutorial/send_message.py"
 ```
 

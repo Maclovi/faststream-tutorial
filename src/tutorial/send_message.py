@@ -2,7 +2,7 @@ import asyncio
 from faststream.rabbit import RabbitBroker
 
 
-async def send_message(broker: RabitBroker) -> None:
+async def send_message(broker: RabbitBroker) -> None:
     await broker.publish("Привет, FastStream!", queue="input-queue")
 
 
