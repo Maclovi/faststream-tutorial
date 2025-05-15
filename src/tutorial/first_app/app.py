@@ -7,9 +7,8 @@ broker = RabbitBroker("amqp://guest:guest@localhost:5672/")
 app = FastStream(broker)
 
 
-# Подписываемся на очередь "input-queue" и публикуем в "output-queue"
+# Подписываемся на очередь "input-queue"
 @broker.subscriber("input-queue")
-@broker.publisher("output-queue")
-async def handle_message(msg: str, logger: Logger) -> str:
+async def handle_message(msg: str, logger: Logger) -> None:
     logger.info(f"Получено сообщение: {msg}")
-    return f"Обработано: {msg.upper()}"
+    logger.info(f"Обработано: {msg.upper()}")

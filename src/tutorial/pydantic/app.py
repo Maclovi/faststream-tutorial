@@ -1,6 +1,7 @@
-from pydantic import BaseModel
 from faststream import FastStream, Logger
 from faststream.rabbit import RabbitBroker
+from pydantic import BaseModel
+
 
 # Определяем структуру сообщения
 class UserMessage(BaseModel):
@@ -17,14 +18,13 @@ app = FastStream(broker)
 @broker.subscriber("input-queue")
 async def handle_message(data: UserMessage, logger: Logger) -> None:
     logger.info(f"Получено: {data.username} сказал '{data.message}'")
-    # Отправляем результат в output-queue
-    await broker.publish(
-        UserMessage(username=data.username, message=data.message.upper()),
-        queue="output-queue"
-    )
+    # Обрабатываем сообщение и отправляем результат в output-queue и final-queue
+    processed = UserMessage(username=data.username, message=data.message.upper())
+    await broker.publish(processed, queue="output-queue")
+    await broker.publish(processed, queue="final-queue")
 
 
 # Подписываемся на очередь output-queue
 @broker.subscriber("output-queue")
 async def check_result(data: UserMessage, logger: Logger) -> None:
-    logger.info(f"Промежуточный результат: {data.username} сказал '{data.message}'")
+    logger.info(f"Промежуточный результат: {data.username} сказал {data.message!r}")

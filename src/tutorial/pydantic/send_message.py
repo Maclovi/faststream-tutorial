@@ -1,12 +1,17 @@
 import asyncio
+
 from faststream.rabbit import RabbitBroker
+from pydantic import BaseModel
+
+
+class UserMessage(BaseModel):
+    username: str
+    message: str
 
 
 async def send_message(broker: RabbitBroker) -> None:
-    await broker.publish(
-        {"username": "Alice", "message": "Hello"},
-        queue="input-queue"
-    )
+    message = UserMessage(username="Alice", message="Hello")
+    await broker.publish(message, queue="input-queue")
 
 
 async def main() -> None:

@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 from faststream import FastStream, Logger
 from faststream.rabbit import RabbitBroker
 
+
 # Определяем структуру сообщения с метаданными
 class UserMessage(BaseModel):
     username: str = Field(description="Имя пользователя", examples=["Alice"])
@@ -10,7 +11,8 @@ class UserMessage(BaseModel):
 
 # Создаем брокер и приложение с метаданными
 broker = RabbitBroker("amqp://guest:guest@localhost:5672/")
-app = FastStream(broker,
+app = FastStream(
+    broker,
     title="User Message Processor",
     description="Приложение для обработки пользовательских сообщений",
 )
@@ -18,20 +20,20 @@ app = FastStream(broker,
 
 # Подписываемся на очередь input-queue
 @broker.subscriber("input-queue")
-async def handle_message(data: UserMessage, logger: Logger) -> None:
+@broker.publisher("output-queue")
+async def handle_message(data: UserMessage, logger: Logger) -> UserMessage:
     """
     Принимает сообщение из input-queue, логирует его и
     отправляет в output-queue с текстом в верхнем регистре.
     """
     logger.info(f"Получено: {data.username} сказал '{data.message}'")
-    await broker.publish(
-        UserMessage(username=data.username, message=data.message.upper()),
-        queue="output-queue"
-    )
+    return UserMessage(username=data.username, message=data.message.upper())
 
 
 # Подписываемся на очередь output-queue
 @broker.subscriber("output-queue")
 async def check_result(data: UserMessage, logger: Logger) -> None:
-    """Логирует обработанное сообщение из output-queue."""
+    """
+    Логирует обработанное сообщение из output-queue.
+    """
     logger.info(f"Промежуточный результат: {data.username} сказал '{data.message}'")
